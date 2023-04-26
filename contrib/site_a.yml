@@ -1,0 +1,12 @@
+site: 'site_a'
+site_id: 'prd'
+site_prefix: 'abc'
+
+p2p_networks:
+  - "10.0.0.0/25" # SPINE-01
+  - "10.0.0.128/25" # SPINE-02
+  - "10.0.1.0/25" # SPINE-03
+
+ntp_servers:
+  - "10.1.144.66"
+  - "10.1.144.67"

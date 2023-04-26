@@ -1,0 +1,24 @@
+{%- macro get_speed(intf) -%}
+  {%- if 'ge' in intf.name -%} 1g
+  {%- elif 'xe' in intf.name -%} 10g
+  {%- elif 'et' in intf.name -%} 100g
+  {%- endif -%}
+{%- endmacro -%}
+
+interfaces {
+{% for intf in interfaces %}
+  replace: {{ intf.name }} {
+    description "## Direct {{ get_speed(intf)|upper }}E Link to {{ intf.host }} ({{ intf.port }}) ##";
+  {% if intf.apply is defined %}
+    apply-groups {{ intf.apply }};
+  {% endif %}
+  {% if intf.address is defined %}
+    unit 0 {
+      family inet {
+        address {{ intf.address }};
+      }
+    }
+  {% endif %}
+  }
+{% endfor %}
+}

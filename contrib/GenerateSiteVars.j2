@@ -1,0 +1,42 @@
+{% set device = ('uk' + site_prefix + '-' + site_id + '-' + DEVICE)|lower %}
+{% set device_type = device.split('-')[2] %}
+{% set device_delta = device.split('-')[3]|int - 1 %}
+
+{% set host = ('uk' + site_prefix + '-' + site_id + '-' + HOST)|lower %}
+{% set host_type = host.split('-')[2] %}
+{% set host_delta = host.split('-')[3]|int - 1 %}
+
+{% if jinjafx.first(['DEVICE']) %}
+<output "sites/{{ site|lower }}/hosts.yml">
+  {% if jinjafx.first(['DEVICE:-0']) %}
+{{ device_type }}:
+  hosts:
+  {% endif %}
+    {{ device }}:
+</output>
+{% endif %}
+
+{% if jinjafx.first() %}
+<output "sites/{{ site|lower }}/group_vars/all.yml">
+  {% if ntp_servers is defined %}
+ntp_servers:
+    {% for s in ntp_servers %}
+  - "{{ s }}"
+    {% endfor %}
+  {% endif %}
+</output>
+{% endif %}
+
+<output "sites/{{ site|lower }}/host_vars/{{ device }}.yml">
+{% if jinjafx.first(['DEVICE']) %}
+interfaces:
+{% endif %}
+{% if TAG|lower == 'underlay' %}
+  {% if device_type == 'spine' %}
+    {% set address = p2p_networks[device_delta]|ipsubnet(31, host_delta + 1) %}
+  {% elif host_type == 'spine' %}
+    {% set address = p2p_networks[host_delta]|ipsubnet(31, device_delta + 1)|ipaddr(-1) %}
+  {% endif %}
+  - { name: "{{ INTERFACE }}", host: "{{ host }}", port: "{{ PORT }}", address: "{{ address }}", apply: "GR-INTF-UNDERLAY" }
+{% endif %}
+</output>

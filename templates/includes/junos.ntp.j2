@@ -1,0 +1,7 @@
+{% if ntp_servers is defined %}
+  replace: ntp {
+  {% for s in ntp_servers %}
+    server {{ s }} version 4;
+  {% endfor %}
+  }
+{% endif %}

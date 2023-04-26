@@ -1,0 +1,4 @@
+interfaces:
+  - { name: "et-0/0/1", host: "ukabc-prd-spine-01", port: "et-0/0/17", address: "10.0.0.35/31", apply: "GR-INTF-UNDERLAY" }
+  - { name: "et-0/0/2", host: "ukabc-prd-spine-02", port: "et-0/0/17", address: "10.0.0.163/31", apply: "GR-INTF-UNDERLAY" }
+  - { name: "et-0/0/3", host: "ukabc-prd-spine-03", port: "et-0/0/17", address: "10.0.1.35/31", apply: "GR-INTF-UNDERLAY" }

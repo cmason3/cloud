@@ -1,0 +1,15 @@
+replace: groups {
+  GR-INTF-UNDERLAY {
+    interfaces {
+      <et-*> {
+        mtu 9192;
+        hold-time up 2000 down 0;
+        unit 0 {
+          family inet {
+            mtu 9100;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,5 @@
+system {
+  host-name {{ inventory_hostname }};
+
+  {% include "includes/junos.ntp.j2" %}
+}
