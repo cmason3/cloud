@@ -22,7 +22,7 @@ With these files, we can then run the following commands:
 
 ```
 python3 -m pip install --user jinjafx
-
+ 
 python3 -m jinjafx -g contrib/site_a.yml -d contrib/site_a.csv -t contrib/GenerateSiteVars.j2
 ```
 
