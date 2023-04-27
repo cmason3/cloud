@@ -1,33 +1,35 @@
+bgp_asn: 64592
+
 interfaces:
-  - { name: "et-0/0/1", host: "ukabc-prd-leaf-01", port: "et-0/0/2", address: "10.0.0.130/31", apply: "GR-INTF-UNDERLAY" }
-  - { name: "et-0/0/2", host: "ukabc-prd-leaf-02", port: "et-0/0/2", address: "10.0.0.132/31", apply: "GR-INTF-UNDERLAY" }
-  - { name: "et-0/0/3", host: "ukabc-prd-leaf-03", port: "et-0/0/2", address: "10.0.0.134/31", apply: "GR-INTF-UNDERLAY" }
-  - { name: "et-0/0/4", host: "ukabc-prd-leaf-04", port: "et-0/0/2", address: "10.0.0.136/31", apply: "GR-INTF-UNDERLAY" }
-  - { name: "et-0/0/5", host: "ukabc-prd-leaf-05", port: "et-0/0/2", address: "10.0.0.138/31", apply: "GR-INTF-UNDERLAY" }
-  - { name: "et-0/0/6", host: "ukabc-prd-leaf-06", port: "et-0/0/2", address: "10.0.0.140/31", apply: "GR-INTF-UNDERLAY" }
-  - { name: "et-0/0/7", host: "ukabc-prd-leaf-07", port: "et-0/0/2", address: "10.0.0.142/31", apply: "GR-INTF-UNDERLAY" }
-  - { name: "et-0/0/8", host: "ukabc-prd-leaf-08", port: "et-0/0/2", address: "10.0.0.144/31", apply: "GR-INTF-UNDERLAY" }
-  - { name: "et-0/0/9", host: "ukabc-prd-leaf-09", port: "et-0/0/2", address: "10.0.0.146/31", apply: "GR-INTF-UNDERLAY" }
-  - { name: "et-0/0/10", host: "ukabc-prd-leaf-10", port: "et-0/0/2", address: "10.0.0.148/31", apply: "GR-INTF-UNDERLAY" }
-  - { name: "et-0/0/11", host: "ukabc-prd-leaf-11", port: "et-0/0/2", address: "10.0.0.150/31", apply: "GR-INTF-UNDERLAY" }
-  - { name: "et-0/0/12", host: "ukabc-prd-leaf-12", port: "et-0/0/2", address: "10.0.0.152/31", apply: "GR-INTF-UNDERLAY" }
-  - { name: "et-0/0/13", host: "ukabc-prd-leaf-13", port: "et-0/0/2", address: "10.0.0.154/31", apply: "GR-INTF-UNDERLAY" }
-  - { name: "et-0/0/14", host: "ukabc-prd-leaf-14", port: "et-0/0/2", address: "10.0.0.156/31", apply: "GR-INTF-UNDERLAY" }
-  - { name: "et-0/0/15", host: "ukabc-prd-leaf-15", port: "et-0/0/2", address: "10.0.0.158/31", apply: "GR-INTF-UNDERLAY" }
-  - { name: "et-0/0/16", host: "ukabc-prd-leaf-16", port: "et-0/0/2", address: "10.0.0.160/31", apply: "GR-INTF-UNDERLAY" }
-  - { name: "et-0/0/17", host: "ukabc-prd-leaf-17", port: "et-0/0/2", address: "10.0.0.162/31", apply: "GR-INTF-UNDERLAY" }
-  - { name: "et-0/0/18", host: "ukabc-prd-leaf-18", port: "et-0/0/2", address: "10.0.0.164/31", apply: "GR-INTF-UNDERLAY" }
-  - { name: "et-0/0/19", host: "ukabc-prd-leaf-19", port: "et-0/0/2", address: "10.0.0.166/31", apply: "GR-INTF-UNDERLAY" }
-  - { name: "et-0/0/20", host: "ukabc-prd-leaf-20", port: "et-0/0/2", address: "10.0.0.168/31", apply: "GR-INTF-UNDERLAY" }
-  - { name: "et-0/0/21", host: "ukabc-prd-leaf-21", port: "et-0/0/2", address: "10.0.0.170/31", apply: "GR-INTF-UNDERLAY" }
-  - { name: "et-0/0/22", host: "ukabc-prd-leaf-22", port: "et-0/0/2", address: "10.0.0.172/31", apply: "GR-INTF-UNDERLAY" }
-  - { name: "et-0/0/23", host: "ukabc-prd-leaf-23", port: "et-0/0/2", address: "10.0.0.174/31", apply: "GR-INTF-UNDERLAY" }
-  - { name: "et-0/0/24", host: "ukabc-prd-leaf-24", port: "et-0/0/2", address: "10.0.0.176/31", apply: "GR-INTF-UNDERLAY" }
-  - { name: "et-0/0/25", host: "ukabc-prd-leaf-25", port: "et-0/0/2", address: "10.0.0.178/31", apply: "GR-INTF-UNDERLAY" }
-  - { name: "et-0/0/26", host: "ukabc-prd-leaf-26", port: "et-0/0/2", address: "10.0.0.180/31", apply: "GR-INTF-UNDERLAY" }
-  - { name: "et-0/0/27", host: "ukabc-prd-leaf-27", port: "et-0/0/2", address: "10.0.0.182/31", apply: "GR-INTF-UNDERLAY" }
-  - { name: "et-0/0/28", host: "ukabc-prd-leaf-28", port: "et-0/0/2", address: "10.0.0.184/31", apply: "GR-INTF-UNDERLAY" }
-  - { name: "et-0/0/29", host: "ukabc-prd-leaf-29", port: "et-0/0/2", address: "10.0.0.186/31", apply: "GR-INTF-UNDERLAY" }
-  - { name: "et-0/0/30", host: "ukabc-prd-leaf-30", port: "et-0/0/2", address: "10.0.0.188/31", apply: "GR-INTF-UNDERLAY" }
-  - { name: "et-0/0/31", host: "ukabc-prd-leaf-31", port: "et-0/0/2", address: "10.0.0.190/31", apply: "GR-INTF-UNDERLAY" }
-  - { name: "et-0/0/32", host: "ukabc-prd-leaf-32", port: "et-0/0/2", address: "10.0.0.192/31", apply: "GR-INTF-UNDERLAY" }
+  - { name: "et-0/0/1", host: "ukabc-prd-leaf-01", port: "et-0/0/2", address: "10.0.0.130/31", peer_as: 64501, apply: "GR-INTF-UNDERLAY" }
+  - { name: "et-0/0/2", host: "ukabc-prd-leaf-02", port: "et-0/0/2", address: "10.0.0.132/31", peer_as: 64502, apply: "GR-INTF-UNDERLAY" }
+  - { name: "et-0/0/3", host: "ukabc-prd-leaf-03", port: "et-0/0/2", address: "10.0.0.134/31", peer_as: 64503, apply: "GR-INTF-UNDERLAY" }
+  - { name: "et-0/0/4", host: "ukabc-prd-leaf-04", port: "et-0/0/2", address: "10.0.0.136/31", peer_as: 64504, apply: "GR-INTF-UNDERLAY" }
+  - { name: "et-0/0/5", host: "ukabc-prd-leaf-05", port: "et-0/0/2", address: "10.0.0.138/31", peer_as: 64505, apply: "GR-INTF-UNDERLAY" }
+  - { name: "et-0/0/6", host: "ukabc-prd-leaf-06", port: "et-0/0/2", address: "10.0.0.140/31", peer_as: 64506, apply: "GR-INTF-UNDERLAY" }
+  - { name: "et-0/0/7", host: "ukabc-prd-leaf-07", port: "et-0/0/2", address: "10.0.0.142/31", peer_as: 64507, apply: "GR-INTF-UNDERLAY" }
+  - { name: "et-0/0/8", host: "ukabc-prd-leaf-08", port: "et-0/0/2", address: "10.0.0.144/31", peer_as: 64508, apply: "GR-INTF-UNDERLAY" }
+  - { name: "et-0/0/9", host: "ukabc-prd-leaf-09", port: "et-0/0/2", address: "10.0.0.146/31", peer_as: 64509, apply: "GR-INTF-UNDERLAY" }
+  - { name: "et-0/0/10", host: "ukabc-prd-leaf-10", port: "et-0/0/2", address: "10.0.0.148/31", peer_as: 64510, apply: "GR-INTF-UNDERLAY" }
+  - { name: "et-0/0/11", host: "ukabc-prd-leaf-11", port: "et-0/0/2", address: "10.0.0.150/31", peer_as: 64511, apply: "GR-INTF-UNDERLAY" }
+  - { name: "et-0/0/12", host: "ukabc-prd-leaf-12", port: "et-0/0/2", address: "10.0.0.152/31", peer_as: 64512, apply: "GR-INTF-UNDERLAY" }
+  - { name: "et-0/0/13", host: "ukabc-prd-leaf-13", port: "et-0/0/2", address: "10.0.0.154/31", peer_as: 64513, apply: "GR-INTF-UNDERLAY" }
+  - { name: "et-0/0/14", host: "ukabc-prd-leaf-14", port: "et-0/0/2", address: "10.0.0.156/31", peer_as: 64514, apply: "GR-INTF-UNDERLAY" }
+  - { name: "et-0/0/15", host: "ukabc-prd-leaf-15", port: "et-0/0/2", address: "10.0.0.158/31", peer_as: 64515, apply: "GR-INTF-UNDERLAY" }
+  - { name: "et-0/0/16", host: "ukabc-prd-leaf-16", port: "et-0/0/2", address: "10.0.0.160/31", peer_as: 64516, apply: "GR-INTF-UNDERLAY" }
+  - { name: "et-0/0/17", host: "ukabc-prd-leaf-17", port: "et-0/0/2", address: "10.0.0.162/31", peer_as: 64517, apply: "GR-INTF-UNDERLAY" }
+  - { name: "et-0/0/18", host: "ukabc-prd-leaf-18", port: "et-0/0/2", address: "10.0.0.164/31", peer_as: 64518, apply: "GR-INTF-UNDERLAY" }
+  - { name: "et-0/0/19", host: "ukabc-prd-leaf-19", port: "et-0/0/2", address: "10.0.0.166/31", peer_as: 64519, apply: "GR-INTF-UNDERLAY" }
+  - { name: "et-0/0/20", host: "ukabc-prd-leaf-20", port: "et-0/0/2", address: "10.0.0.168/31", peer_as: 64520, apply: "GR-INTF-UNDERLAY" }
+  - { name: "et-0/0/21", host: "ukabc-prd-leaf-21", port: "et-0/0/2", address: "10.0.0.170/31", peer_as: 64521, apply: "GR-INTF-UNDERLAY" }
+  - { name: "et-0/0/22", host: "ukabc-prd-leaf-22", port: "et-0/0/2", address: "10.0.0.172/31", peer_as: 64522, apply: "GR-INTF-UNDERLAY" }
+  - { name: "et-0/0/23", host: "ukabc-prd-leaf-23", port: "et-0/0/2", address: "10.0.0.174/31", peer_as: 64523, apply: "GR-INTF-UNDERLAY" }
+  - { name: "et-0/0/24", host: "ukabc-prd-leaf-24", port: "et-0/0/2", address: "10.0.0.176/31", peer_as: 64524, apply: "GR-INTF-UNDERLAY" }
+  - { name: "et-0/0/25", host: "ukabc-prd-leaf-25", port: "et-0/0/2", address: "10.0.0.178/31", peer_as: 64525, apply: "GR-INTF-UNDERLAY" }
+  - { name: "et-0/0/26", host: "ukabc-prd-leaf-26", port: "et-0/0/2", address: "10.0.0.180/31", peer_as: 64526, apply: "GR-INTF-UNDERLAY" }
+  - { name: "et-0/0/27", host: "ukabc-prd-leaf-27", port: "et-0/0/2", address: "10.0.0.182/31", peer_as: 64527, apply: "GR-INTF-UNDERLAY" }
+  - { name: "et-0/0/28", host: "ukabc-prd-leaf-28", port: "et-0/0/2", address: "10.0.0.184/31", peer_as: 64528, apply: "GR-INTF-UNDERLAY" }
+  - { name: "et-0/0/29", host: "ukabc-prd-leaf-29", port: "et-0/0/2", address: "10.0.0.186/31", peer_as: 64529, apply: "GR-INTF-UNDERLAY" }
+  - { name: "et-0/0/30", host: "ukabc-prd-leaf-30", port: "et-0/0/2", address: "10.0.0.188/31", peer_as: 64530, apply: "GR-INTF-UNDERLAY" }
+  - { name: "et-0/0/31", host: "ukabc-prd-leaf-31", port: "et-0/0/2", address: "10.0.0.190/31", peer_as: 64531, apply: "GR-INTF-UNDERLAY" }
+  - { name: "et-0/0/32", host: "ukabc-prd-leaf-32", port: "et-0/0/2", address: "10.0.0.192/31", peer_as: 64532, apply: "GR-INTF-UNDERLAY" }

@@ -29,14 +29,22 @@ ntp_servers:
 
 <output "sites/{{ site|lower }}/host_vars/{{ device }}.yml">
 {% if jinjafx.first(['DEVICE']) %}
+  {% if device_type == 'leaf' %}
+bgp_asn: {{ bgp_base_asn + device_delta + 1 }}
+  {% elif device_type == 'spine' %}
+bgp_asn: {{ bgp_base_asn + 90 + device_delta + 1 }}
+  {% endif %}
+
 interfaces:
 {% endif %}
 {% if TAG|lower == 'underlay' %}
   {% if device_type == 'spine' %}
     {% set address = p2p_networks[device_delta]|ipsubnet(31, host_delta + 1) %}
+    {% set peer_as = bgp_base_asn + host_delta + 1 %}
   {% elif host_type == 'spine' %}
     {% set address = p2p_networks[host_delta]|ipsubnet(31, device_delta + 1)|ipaddr(-1) %}
+    {% set peer_as = bgp_base_asn + 90 + host_delta + 1 %}
   {% endif %}
-  - { name: "{{ INTERFACE }}", host: "{{ host }}", port: "{{ PORT }}", address: "{{ address }}", apply: "GR-INTF-UNDERLAY" }
+  - { name: "{{ INTERFACE }}", host: "{{ host }}", port: "{{ PORT }}", address: "{{ address }}", peer_as: {{ peer_as }}, apply: "GR-INTF-UNDERLAY" }
 {% endif %}
 </output>

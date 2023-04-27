@@ -2,6 +2,8 @@ site: 'site_a'
 site_id: 'prd'
 site_prefix: 'abc'
 
+bgp_base_asn: 64500
+
 p2p_networks:
   - "10.0.0.0/25" # SPINE-01
   - "10.0.0.128/25" # SPINE-02
