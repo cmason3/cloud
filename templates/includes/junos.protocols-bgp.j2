@@ -1,0 +1,27 @@
+protocols {
+  bgp {
+    group GR-EBGP-UNDERLAY {
+      type external;
+{% if spine %}
+      passive;
+{% endif %}
+      local-as {{ bgp_asn }};
+      multipath {
+        multiple-as;
+      }
+      bfd-liveness-detection {
+        minimum-interval 1000;
+        multiplier 3;
+        no-adaptation;
+      }
+{% for intf in interfaces %}
+  {% if intf.peer_as is defined %}
+      neighbor {{ intf.address|ansible.utils.ipaddr('peer') }} {
+        description "## {{ intf.host }} ##";
+        peer-as {{ intf.peer_as }};
+      }
+  {% endif %}
+{% endfor %}
+    }
+  }
+}

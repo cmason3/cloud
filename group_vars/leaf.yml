@@ -1,1 +1,4 @@
 template: fabric.j2
+mx: False
+spine: False
+leaf: True
