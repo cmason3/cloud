@@ -31,16 +31,18 @@ This results in the following files being generated - the `GenerateSiteVars.j2` 
 You should never modify anything within the `sites` directory - only ever modify the two site-specific files within the `contrib` directory and then re-run the above command to re-generate the files within the `sites` directory.
 
 ```
-839B > sites/site_a/hosts.yml
+894B > sites/site_a/hosts.yml
 49B > sites/site_a/group_vars/all.yml
-380B > sites/site_a/host_vars/ukabc-prd-leaf-01.yml
-380B > sites/site_a/host_vars/ukabc-prd-leaf-02.yml
+429B > sites/site_a/host_vars/ukabc-prd-mx-01.yml
+432B > sites/site_a/host_vars/ukabc-prd-mx-02.yml
+4.73kB > sites/site_a/host_vars/ukabc-prd-spine-01.yml
+4.77kB > sites/site_a/host_vars/ukabc-prd-spine-02.yml
+4.74kB > sites/site_a/host_vars/ukabc-prd-spine-03.yml
+444B > sites/site_a/host_vars/ukabc-prd-leaf-01.yml
+444B > sites/site_a/host_vars/ukabc-prd-leaf-02.yml
 ...
-385B > sites/site_a/host_vars/ukabc-prd-leaf-31.yml
-385B > sites/site_a/host_vars/ukabc-prd-leaf-32.yml
-3.94kB > sites/site_a/host_vars/ukabc-prd-spine-01.yml
-3.97kB > sites/site_a/host_vars/ukabc-prd-spine-02.yml
-3.94kB > sites/site_a/host_vars/ukabc-prd-spine-03.yml
+449B > sites/site_a/host_vars/ukabc-prd-leaf-31.yml
+449B > sites/site_a/host_vars/ukabc-prd-leaf-32.yml
 ```
 
 Now we have a way to generate our site-specific `group_vars` and `host_vars` on demand, we need to look at how we are going to structure all of this. One of the good features of Ansible is the ability to define `group_vars` and `host_vars` at different levels to create global ones and site-specific ones:

@@ -1,0 +1,6 @@
+bgp_asn: 64503
+
+interfaces:
+  - { name: "et-0/0/1", host: "ukabc-prd-spine-01", port: "et-0/0/3", address: "10.0.0.7/31", peer_as: 64591, apply: "GR-INTF-UNDERLAY" }
+  - { name: "et-0/0/2", host: "ukabc-prd-spine-02", port: "et-0/0/3", address: "10.0.0.135/31", peer_as: 64592, apply: "GR-INTF-UNDERLAY" }
+  - { name: "et-0/0/3", host: "ukabc-prd-spine-03", port: "et-0/0/3", address: "10.0.1.7/31", peer_as: 64593, apply: "GR-INTF-UNDERLAY" }
