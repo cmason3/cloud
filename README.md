@@ -35,7 +35,7 @@ DEVICE | INTERFACE | HOST | PORT | TAG
 `leaf-({1-32:1})%2` | `et-0/0/\2` | `spine-({1-3:1})%2` | `et-0/0/\1` | `Underlay`
 `spine-({1-3:1})%2` | `et-0/0/\2` | `leaf-({1-32:1})%2` | `et-0/0/\1` | `Underlay`
 
-The syntax `{1-32:1}` is a counter which will create rows using the values 1 to 32 with an increment of 1. The `%2` syntax will ensure the number is zero padded to 2 digits. The `{0|63}` syntax will alternate the value between 0 and 63 for subsequent rows. The `()` and `\n` syntax are standard Regex style capture groups that allows you to copy a value and use it elsewhere.
+The syntax `{1-32:1}` is a counter which will create rows using the values 1 to 32 with an increment of 1. The `%2` syntax will ensure the number is zero padded to 2 digits. The `{0|63}` syntax will alternate the value between 0 and 63 for subsequent rows. The `()` and `\n` syntax are standard RegEx style capture groups that allows you to copy a value and use it elsewhere.
 
 You should never modify anything within the `sites` directory - only ever modify the two site-specific files within the `contrib` directory and then re-run the above command to re-generate the files within the `sites` directory.
 
