@@ -1,0 +1,23 @@
+- hosts: all
+  connection: local
+  gather_facts: no
+
+  tasks:
+    - name: "junos commit confirmed"
+      juniper.device.config:
+        load: "{{ deploy_method }}"
+        format: "text"
+        src: "build/{{ inventory_hostname }}.cfg"
+        check_commit_wait: 10
+        confirmed: 5
+        diff: true
+      register: response
+
+    - name: "diff"
+      debug: var=response.diff_lines
+      when: response.diff_lines is defined
+
+    - name: "junos commit"
+      juniper.device.config:
+        commit: true
+      when: response.diff_lines is defined

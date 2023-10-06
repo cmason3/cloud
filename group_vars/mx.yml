@@ -1,4 +1,5 @@
 template: fabric.j2
+deploy_method: "replace"
 mx: True
 spine: False
 leaf: False
