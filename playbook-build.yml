@@ -1,0 +1,15 @@
+- hosts: all
+  connection: local
+  gather_facts: no
+
+  tasks:
+    - name: "create local build directory"
+      file:
+        path: "build/"
+        state: directory
+      run_once: True
+
+    - name: "build device configurations"
+      template:
+        src: "templates/{{ template }}"
+        dest: "build/{{ inventory_hostname }}.cfg"
