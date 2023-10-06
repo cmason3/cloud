@@ -26,14 +26,14 @@ python3 -m pip install --user jinjafx
 python3 -m jinjafx -g contrib/site_a.yml -d contrib/site_a.csv -t contrib/GenerateSiteVars.j2
 ```
 
-This results in the following files being generated - the `GenerateSiteVars.j2` template will need to be tailored to your environment as it currently only adds a subset of the information required to deploy all the networking aspects. If you look at `site_a.csv` you will also notice it doesn't include all the connections required - JinjaFx supports something that I term dynamic CSV, where we can use counters and RegEx style character classes and groups to expand rows into lots of rows if there is a pattern - the following CSV file will get expanded to over 200 lines:
+This results in the following files being generated - the `GenerateSiteVars.j2` template will need to be tailored to your environment as it currently only adds a subset of the information required to deploy all the networking aspects. If you look at `site_a.csv` you will also notice it doesn't include all the connections required - JinjaFx supports something that I term dynamic CSV, where we can use counters and RegEx style character classes and groups to expand rows into lots of rows if there is a pattern - the following CSV will get expanded to over 200 lines:
 
 DEVICE | INTERFACE | HOST | PORT | TAG
 --- | --- | --- | --- | ---
 `mx-{1-2:1}%2` | `et-0/1/\1` | `spine-({1-3:1})%2` | `et-0/0/{0\|63:2}` | `Underlay`
-spine-({1-3:1})%2 | et-0/0/{0\|63} | mx-{1-2:1}%2 | et-0/1/\1 | Underlay
-leaf-({1-32:1})%2 | et-0/0/\2 | spine-({1-3:1})%2 | et-0/0/\1 | Underlay
-spine-({1-3:1})%2 | et-0/0/\2 | leaf-({1-32:1})%2 | et-0/0/\1 | Underlay
+`spine-({1-3:1})%2` | `et-0/0/{0\|63}` | `mx-{1-2:1}%2` | `et-0/1/\1` | `Underlay`
+`leaf-({1-32:1})%2` | `et-0/0/\2` | `spine-({1-3:1})%2` | `et-0/0/\1` | `Underlay`
+`spine-({1-3:1})%2` | `et-0/0/\2` | `leaf-({1-32:1})%2` | `et-0/0/\1` | `Underlay`
 
 The syntax `{1-32:1}` is a counter which will create rows using the values 1 to 32 with an increment of 1. The `%2` syntax will ensure the number is zero padded to 2 digits. The `{0|63}` syntax will alternate the value between 0 and 63 for subsequent rows. The `()` and `\n` syntax are standard Regex style capture groups that allows you to copy a value and use it elsewhere.
 
