@@ -111,13 +111,11 @@ The Ansible Playbook `playbook-build.yml` defines a build task using the `templa
 
     - name: "include vaulted credentials (global)"
       include_vars: "group_vars/credentials.yml"
-      delegate_to: localhost
       failed_when: false
       run_once: true
 
     - name: "include vaulted credentials (site specific)"
       include_vars: "{{ inventory_dir }}/group_vars/credentials.yml"
-      delegate_to: localhost
       failed_when: false
       run_once: true
 
