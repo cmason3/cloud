@@ -30,7 +30,7 @@ This results in the following files being generated - the `GenerateSiteVars.j2` 
 
 DEVICE | INTERFACE | HOST | PORT | TAG
 --- | --- | --- | --- | ---
-mx-{1-2:1}%2 | et-0/1/\1 | spine-({1-3:1})%2 | et-0/0/{0\|63:2} | Underlay
+`mx-{1-2:1}%2` | `et-0/1/\1` | `spine-({1-3:1})%2` | `et-0/0/{0\|63:2}` | `Underlay`
 spine-({1-3:1})%2 | et-0/0/{0\|63} | mx-{1-2:1}%2 | et-0/1/\1 | Underlay
 leaf-({1-32:1})%2 | et-0/0/\2 | spine-({1-3:1})%2 | et-0/0/\1 | Underlay
 spine-({1-3:1})%2 | et-0/0/\2 | leaf-({1-32:1})%2 | et-0/0/\1 | Underlay
