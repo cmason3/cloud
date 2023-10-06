@@ -26,7 +26,7 @@ python3 -m pip install --user jinjafx
 python3 -m jinjafx -g contrib/site_a.yml -d contrib/site_a.csv -t contrib/GenerateSiteVars.j2
 ```
 
-This results in the following files being generated - the `GenerateSiteVars.j2` template will need to be tailored to your environment as it currently only adds a subset of the information required to deploy all the networking aspects. If you look at `site_a.csv` you will also notice it doesn't include all the connections required - JinjaFx supports something that I term dynamic CSV, where we can use counters and RegEx style character classes and groups to expand rows into lots of rows if there is a pattern - the following CSV will get expanded to over 200 lines:
+This results in the below files being generated - the `GenerateSiteVars.j2` template will need to be tailored to your environment as it currently only adds a subset of the information required to deploy all the networking aspects. If you look at `site_a.csv` you will also notice it doesn't include all the connections required - JinjaFx supports something that I term dynamic CSV, where we can use counters and RegEx style character classes and groups to expand rows into lots of rows if there is a pattern - the following CSV will get expanded to over 200 lines:
 
 DEVICE | INTERFACE | HOST | PORT | TAG
 --- | --- | --- | --- | ---
