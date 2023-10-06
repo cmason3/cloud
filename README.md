@@ -2,7 +2,7 @@
 
 Not quite a whole Cloud, but a Juniper based Leaf/Spine EVPN fabric that supports a Red Hat OpenStack deployment. This repository contains a framework as opposed to a full deployment but gives the general idea as to how we used Ansible with Jinja2 to build and deploy the networking aspects of our Cloud environment. Whilst we have used Ansible before, we had never used it on this scale - we wanted Ansible to deploy everything, with no need for manual configuration (Network as Code).
 
-The initial challenge was how do we get all the information about interfaces, IP addresses and BGP ASNs into the Jinja2 templates that we were going to use to generate our device configurations. Anyone who is familiar with Ansible knows information is provided in `group_vars` and `host_vars`, but when you have nearly a hundred devices per environment you don't want to be creating and updating them by hand. Excel is quite common with Engineers that deploy networks as it it usually used for patching schedules, which detail what needs to be connected to what. As we didn’t want to duplicate information in multiple places, we wanted to use this information as input to our Ansible automation, but it didn't contain everything we needed.
+The initial challenge was how do we get all the information about interfaces, IP addresses and BGP ASNs into the Jinja2 templates that we were going to use to generate our device configurations. Anyone who is familiar with Ansible knows information is provided in `group_vars` and `host_vars`, but when you have nearly a hundred devices per environment you don't want to be creating and updating them by hand. Excel is quite common with Engineers that deploy networks as it is usually used for patching schedules, which detail what needs to be connected to what. As we didn’t want to duplicate information in multiple places, we wanted to use this information as input to our Ansible automation, but it didn't contain everything we needed.
 
 One important point that I can't emphasise enough when designing a large deployment, is to design it with automation in mind. Without standardisation you can't easily template it, which is key to automation unless you want lots and lots of lookup tables. Make things deterministic as much as possible, for example, design it so that leaf-01 connects to port 1 and leaf-02 connects to port 2 on your spine switches, allocate a point-to-point subnet per spine switch and use the leaf number to determine the subnet to use and allocate BGP ASNs based on your leaf or spine numbers. When allocating anything, think how can I devise a function that can work it out without having to perform a lookup.
 
@@ -21,12 +21,21 @@ Instead of writing a throwaway Python script which parsed these two files (as lo
 With these files, we can then run the following commands:
 
 ```
-python3 -m pip install --user ansible-core jinjafx
+python3 -m pip install --user jinjafx
  
 python3 -m jinjafx -g contrib/site_a.yml -d contrib/site_a.csv -t contrib/GenerateSiteVars.j2
 ```
 
-This results in the following files being generated - the `GenerateSiteVars.j2` template will need to be tailored to your environment as it currently only adds a subset of the information required to deploy all the networking aspects. If you look at `site_a.csv` you will also notice it doesn't include all the connections required - JinjaFx supports something that I term dynamic CSV, where we can use counters and RegEx style character classes and groups to expand rows into lots of rows if there is a pattern.
+This results in the following files being generated - the `GenerateSiteVars.j2` template will need to be tailored to your environment as it currently only adds a subset of the information required to deploy all the networking aspects. If you look at `site_a.csv` you will also notice it doesn't include all the connections required - JinjaFx supports something that I term dynamic CSV, where we can use counters and RegEx style character classes and groups to expand rows into lots of rows if there is a pattern - the following CSV file will get expanded to over 200 lines:
+
+DEVICE | INTERFACE | HOST | PORT | TAG
+--- | --- | --- | --- | ---
+mx-{1-2:1}%2 | et-0/1/\1 | spine-({1-3:1})%2 | et-0/0/{0|63:2} | Underlay
+spine-({1-3:1})%2 | et-0/0/{0|63} | mx-{1-2:1}%2 | et-0/1/\1 | Underlay
+leaf-({1-32:1})%2 | et-0/0/\2 | spine-({1-3:1})%2 | et-0/0/\1 | Underlay
+spine-({1-3:1})%2 | et-0/0/\2 | leaf-({1-32:1})%2 | et-0/0/\1 | Underlay
+
+The syntax `{1-32:1}` is a counter which will create rows using the values 1 to 32 with an increment of 1. The `%2` syntax will ensure the number is zero padded to 2 digits. The `{0|63}` syntax will alternate the value between 0 and 63 for subsequent rows. The `()` and `\n` syntax are standard Regex style capture groups that allows you to copy a value and use it elsewhere.
 
 You should never modify anything within the `sites` directory - only ever modify the two site-specific files within the `contrib` directory and then re-run the above command to re-generate the files within the `sites` directory.
 
@@ -108,7 +117,7 @@ By running the following command it will build all the configurations for a spec
 ansible-playbook playbook-build.yml -i sites/site_a/hosts.yml
 ```
 
-We then used the `juniper.device.config` module from the `juniper.device` Ansible collection in the following Playbook to deploy our configuration to our Juniper devices over NETCONF - we started off by deploying the configuration using `load: replace` so we automated subsets of it, but we have now migrated to using `load: override` as all network configuration is generated by our Ansible templates (this is defined as `deploy_method` within our `group_vars`.
+We then used the `juniper.device.config` module from the `juniper.device` Ansible collection in the following Playbook to deploy our configuration to our Juniper devices over NETCONF - we started off by deploying the configuration using `load: replace` so we automated subsets of it, but we have now migrated to using `load: override` as all network configuration is generated by our Ansible templates (this is defined as `deploy_method` within our `group_vars`).
 
 ```yaml
 - hosts: all
