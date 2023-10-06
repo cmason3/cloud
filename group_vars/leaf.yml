@@ -1,5 +1,5 @@
 template: fabric.j2
-deploy_method: "override"
+deploy_method: "replace"
 mx: False
 spine: False
 leaf: True
