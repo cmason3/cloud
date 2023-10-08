@@ -3,6 +3,13 @@
   gather_facts: no
 
   tasks:
+    - name: "device connectivity"
+      wait_for:
+        host: "{{ inventory_hostname }}"
+        port: 830
+        delay: 0
+        timeout: 3
+  
     - name: "junos commit confirmed"
       juniper.device.config:
         load: "{{ deploy_method }}"
