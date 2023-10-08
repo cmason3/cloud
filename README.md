@@ -95,7 +95,13 @@ The final piece of the puzzle was our Jinja2 templates used to generate our devi
         └── junos.<*>.j2
 ```
 
-The Ansible Playbook `playbook-build.yml` defines a build task using the `template` module - the required template is defined within `group_vars/leaf.yml`, `group_vars/spine.yml` or `group_vars/mx.yml` depending on the device type. This template will then import other templates from the `templates/includes` directory as required. These templates will reference variables which are defined within the `group_vars` and `host_vars`.
+The Ansible Playbook `playbook-build.yml` defines a build task using the `template` module - the required template is defined within `group_vars/leaf.yml`, `group_vars/spine.yml` or `group_vars/mx.yml` depending on the device type:
+
+```yaml
+template: fabric.j2
+```
+
+This template will then import other templates from the `templates/includes` directory as required. These templates will reference variables which are defined within the `group_vars` and `host_vars`.
 
 ```yaml
 - hosts: all
