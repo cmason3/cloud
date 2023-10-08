@@ -170,3 +170,5 @@ We then run the following command to deploy the changes for a specific site:
 ```
 ansible-playbook playbook-deploy.yml -i sites/site_a/hosts.yml -u <USER> -k
 ```
+
+We also use the `junos.device.config` module with the `check: true` flag for a check stage, which confirms what changes will be made without actually deploying them. If you wish to rollback the changes you can also use the `junos.device.config` module with the `rollback: 1` flag.
